@@ -22,7 +22,7 @@ force_nid = re.findall(r'var FORCE_NID = \"(.*?)\";', r.text)[0]
 
 documents_url = 'https://piazza.com/class_profile/get_resource/' + force_nid + '/'
 documents_json = json.loads(re.findall(r'this\.resource_data        = (.*?);', r.text)[0])
-documents_list = [[documents_url + json['id'], json['content']] for json in documents_json]
+documents_list = [[documents_url + json['id'], json['subject']] for json in documents_json]
 
 for document in documents_list:
     try:
