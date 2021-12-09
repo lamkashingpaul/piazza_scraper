@@ -31,8 +31,7 @@ def main():
     r = s.post(login_request_url, data=payload)
     r = s.get(resource)
 
-    network_id = re.findall(r'var NETWORK = .*?\"id\":\"(.*?)\".*?;', r.text)[0]
-    resources = re.findall(r'var RESOURCES = (.*?);', r.text)[0]
+    network_id = re.findall(r'const USER = .*?\"id\":\"(.*?)\".*?;', r.text)[0]
 
     documents_url = 'https://piazza.com/class_profile/get_resource/' + network_id + '/'
     documents_json = json.loads(re.findall(r'var RESOURCES = (.*?);', r.text)[0])
